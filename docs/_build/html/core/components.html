@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>components module &mdash; twinmodules 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            twinmodules
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">components module</a><ul>
+<li><a class="reference internal" href="#components.autoscale_sensors"><code class="docutils literal notranslate"><span class="pre">autoscale_sensors()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">twinmodules</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">components module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/core/components.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-components">
+<span id="components-module"></span><h1>components module<a class="headerlink" href="#module-components" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="components.autoscale_sensors">
+<span class="sig-prename descclassname"><span class="pre">components.</span></span><span class="sig-name descname"><span class="pre">autoscale_sensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iam_role</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ansys_license_server</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">virtual_sensor_img</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2048</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_IoT_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DG-NG-sensor-data/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#components.autoscale_sensors" title="Permalink to this definition"></a></dt>
+<dd><p>Automatically create or destroy virtual sensors in an AWS Batch environment.
+This function can be used with or without an ANSYS license server.
+:rtype: <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+<ol class="arabic">
+<li><p>A connection to the Batch compute environment is established.</p></li>
+<li><p>The general job definition for a virtual sensor is defined</p></li>
+<li><p>Existing running virtual sensors (i.e. existing Batch jobs) are queried</p></li>
+<li><p>New sensor is checked in an S3 Bucket</p>
+<p>Objects are assumed to be named:  &lt;someName&gt;_#.&lt;csv&gt;
+All of the object # are determined and assumed that a virtual sensor will
+be associated with each #.  If there is no virtual sensor from step 3
+associated with #, then a virtual sensor will be created.  If there is a
+virtual sensor and no associated #, then the sensor will be destroyed.</p>
+</li>
+<li><p>Kill all sensors no longer associated with data.</p></li>
+<li><p>Create all new sensors that do not exist, but data is now available.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iam_role</strong> (<em>str</em>) – IAM rol to be assumed by virtual sensors.</p></li>
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – The s3 bucket to look for data.
+#TODO: will add connections to all other TwinModules data sources. For
+meta data determination.</p></li>
+<li><p><strong>ansys_license_server</strong> (<em>str</em><em>, </em><em>optional</em>) – Use this license server ip address if applicable. The default is “”.</p></li>
+<li><p><strong>virtual_sensor_img</strong> (<em>str</em><em>, </em><em>optional</em>) – The container image to use (URL). The default is “”.</p></li>
+<li><p><strong>cpu</strong> (<em>int</em><em>, </em><em>optional</em>) – Required cpus needed for virtual sensor. The default is 2.</p></li>
+<li><p><strong>memory</strong> (<em>int</em><em>, </em><em>optional</em>) – Required RAM in MB needed for virtual sensor. The default is 2048.</p></li>
+<li><p><strong>gpu</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of gpus needed by virtual sensor.  Note the AWS Batch compute
+environment must be able to support gpus. The default is 0.</p></li>
+<li><p><strong>s3_IoT_key</strong> (<em>str</em><em>, </em><em>optional</em>) – The s3 key/folder to use for new data. The default is “DG-NG-sensor-data/”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, AWS AC Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWSBatch module &mdash; twinmodules 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            twinmodules
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AWSBatch module</a><ul>
+<li><a class="reference internal" href="#AWSBatch.batch"><code class="docutils literal notranslate"><span class="pre">batch</span></code></a><ul>
+<li><a class="reference internal" href="#AWSBatch.batch.sendBatchJob"><code class="docutils literal notranslate"><span class="pre">batch.sendBatchJob()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.removeJobDefinition"><code class="docutils literal notranslate"><span class="pre">batch.removeJobDefinition()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.defineBatchJob"><code class="docutils literal notranslate"><span class="pre">batch.defineBatchJob()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.generateBatch"><code class="docutils literal notranslate"><span class="pre">batch.generateBatch()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.terminateBatch"><code class="docutils literal notranslate"><span class="pre">batch.terminateBatch()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.wait_for_jobs_finish"><code class="docutils literal notranslate"><span class="pre">batch.wait_for_jobs_finish()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.kill_jobs"><code class="docutils literal notranslate"><span class="pre">batch.kill_jobs()</span></code></a></li>
+<li><a class="reference internal" href="#AWSBatch.batch.get_running_jobs"><code class="docutils literal notranslate"><span class="pre">batch.get_running_jobs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">twinmodules</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWSBatch module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/AWSModules/AWSBatch.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-AWSBatch">
+<span id="awsbatch-module"></span><h1>AWSBatch module<a class="headerlink" href="#module-AWSBatch" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="AWSBatch.batch">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AWSBatch.</span></span><span class="sig-name descname"><span class="pre">batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">infrastructure_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'us-east-1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_namespace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'batch-namespace'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'my-queue-1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">computeEnvironmentName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TwinFlow_batch_env'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minvCpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxvCpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instanceTypes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'optimal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IAM_role</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handle both the IaC for AWS Batch and
+utilization of queues, job submission, etc.</p>
+<p>The IaC is relying on AWS SDK, in the future it will
+be swapped for CDK.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>infrastructure_type</strong> (<em>str</em>) – Determines underlying infrastructure type.
+e.g. EKS, Fargate, EC2</p></li>
+<li><p><strong>infrastructure_type</strong> – Options are: ‘ec2’, ‘eks’,’fargate’</p></li>
+<li><p><strong>region</strong> (<em>str</em><em>, </em><em>optional</em>) – The default is “us-east-1”.</p></li>
+<li><p><strong>batch_namespace</strong> (<em>str</em><em>, </em><em>optional</em>) – The default is “batch-namespace”.</p></li>
+<li><p><strong>queue_name</strong> (<em>str</em><em>, </em><em>optional</em>) – The default is “my-queue-1”.</p></li>
+<li><p><strong>computeEnvironmentName</strong> (<em>str</em><em>, </em><em>optional</em>) – The default is ‘TwinFlow_batch_env’.</p></li>
+<li><p><strong>minvCpus</strong> (<em>int</em><em>, </em><em>optional</em>) – Any value greater than or equal to zero.  A value of zero means the
+cluster will auto close all compute instances when finished, but requires the
+longest start up time for new jobs.  If a user selects a warm startup configuration
+such as a value of 500, a cluster will remain provisioned and provide the fastest
+startup time for new jobs, but also includes costs of keeping these instances open.
+The default is 1.</p></li>
+<li><p><strong>maxvCpus</strong> (<em>int</em><em>, </em><em>optional</em>) – Prevent AWS Batch from using more than this many cpus.
+The default is 500.</p></li>
+<li><p><strong>instanceTypes</strong> (<em>str</em><em>, </em><em>optional</em>) – Specify the exact instant type or leave this as default for Batch auto selection.
+When defining batch jobs with ‘defineBatchJob’, users can select a GPU instance. However,
+if a user wants a specific type, such as a P4, that must be defined here.
+The default is ‘optimal’.</p></li>
+<li><p><strong>IAM_role</strong> (<em>str</em><em>, </em><em>optional</em>) – What is the IAM role that the compute instances will assume.
+The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.sendBatchJob">
+<span class="sig-name descname"><span class="pre">sendBatchJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobDefinitionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.sendBatchJob" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>jobName</strong> (<em>str</em>) – The name for this specific job submission.</p></li>
+<li><p><strong>jobDefinitionName</strong> (<em>str</em>) – The name of the job definition to use.</p></li>
+<li><p><strong>override_command</strong> (<em>list</em><em>, </em><em>optional</em>) – When running this job, what command line argument should be used
+instead of the command provided in the job definition.
+The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="s1">&#39;jobId&#39;</span><span class="p">:</span> <span class="s1">&#39;876da822-4198-45f2-a252-6cea32512ea8&#39;</span><span class="p">,</span>
+<span class="s1">&#39;jobName&#39;</span><span class="p">:</span> <span class="s1">&#39;example&#39;</span><span class="p">,</span>
+<span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;...&#39;</span><span class="p">:</span> <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.removeJobDefinition">
+<span class="sig-name descname"><span class="pre">removeJobDefinition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobDefinitionName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.removeJobDefinition" title="Permalink to this definition"></a></dt>
+<dd><p>This will delete all versions of the job definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobDefinitionName</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.defineBatchJob">
+<span class="sig-name descname"><span class="pre">defineBatchJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_name_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobDefinitionName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environ_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.defineBatchJob" title="Permalink to this definition"></a></dt>
+<dd><p>Create an AWS Batch job definition that can be utilized
+by any number of jobs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>image_name_uri</strong> (<em>str</em>) – The container end point reference such as ECR location.</p></li>
+<li><p><strong>host_path</strong> (<em>str</em>) – If using EKS, host path must be defined.</p></li>
+<li><p><strong>job_command</strong> (<em>list</em>) – Default command line arguments, can be overridden for
+each job submission.</p></li>
+<li><p><strong>cpu</strong> (<em>int</em>) – How many vcpu are required.</p></li>
+<li><p><strong>memory</strong> (<em>int</em>) – How much RAM in MB is required.</p></li>
+<li><p><strong>jobDefinitionName</strong> (<em>str</em>) – Name the definition</p></li>
+<li><p><strong>gpu</strong> (<em>int</em><em>, </em><em>optional</em>) – How many GPUs are needed. The default is 0.</p></li>
+<li><p><strong>timeout</strong> (<em>int</em><em>, </em><em>optional</em>) – Job will be auto-aborted after this amount of time (sec). The default is 0.</p></li>
+<li><p><strong>environ_vars</strong> (<em>dict</em><em>, </em><em>optional</em>) – What environmental variables should be set prior to
+job command execution. The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.generateBatch">
+<span class="sig-name descname"><span class="pre">generateBatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.generateBatch" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the AWS Batch environment and the queue needed to
+run jobs in AWS Batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>and</strong> (<em>Most setup should be set during object instantiation</em>) – </p></li>
+<li><p><strong>batch.</strong> (<em>thus a user only needs to call this method to generate the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.terminateBatch">
+<span class="sig-name descname"><span class="pre">terminateBatch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.terminateBatch" title="Permalink to this definition"></a></dt>
+<dd><p>When a user is done using an AWS Batch environment,
+this function will terminate both the queue and
+the batch compute environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.wait_for_jobs_finish">
+<span class="sig-name descname"><span class="pre">wait_for_jobs_finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_jobs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.wait_for_jobs_finish" title="Permalink to this definition"></a></dt>
+<dd><p>This is a blocking function that will pause execution
+of python code until all jobs have terminated within
+the specific queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>all_jobs</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Job IDs to monitor for completion. Can be used with
+the ‘get_running_jobs’ to obtain a list of all currently
+running jobs in the queue.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.kill_jobs">
+<span class="sig-name descname"><span class="pre">kill_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.kill_jobs" title="Permalink to this definition"></a></dt>
+<dd><p>Terminate all jobs provided in this list from a
+specific queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>jobs</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of job IDs that will be terminated.  Note, this is often
+not instances, i.e. the termination command will be sent
+to Batch, and there may be a delay in seeing termination
+in the AWS Console as Batch graceful to terminates the
+container.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="AWSBatch.batch.get_running_jobs">
+<span class="sig-name descname"><span class="pre">get_running_jobs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AWSBatch.batch.get_running_jobs" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list that containers both the
+job name and the batch defined job ID.  The
+‘kill_jobs’ and ‘wait_for_jobs_finish’ only
+require the jobID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[job[‘jobName’] , job[‘jobId’] ]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, AWS AC Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

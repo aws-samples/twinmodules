@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS_SQS module &mdash; twinmodules 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            twinmodules
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AWS_SQS module</a><ul>
+<li><a class="reference internal" href="#AWS_SQS.watch_sqs"><code class="docutils literal notranslate"><span class="pre">watch_sqs()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_SQS.create_sqs_s3"><code class="docutils literal notranslate"><span class="pre">create_sqs_s3()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_SQS.delete_sqs"><code class="docutils literal notranslate"><span class="pre">delete_sqs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">twinmodules</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWS_SQS module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/AWSModules/AWS_SQS.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-AWS_SQS">
+<span id="aws-sqs-module"></span><h1>AWS_SQS module<a class="headerlink" href="#module-AWS_SQS" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_SQS.watch_sqs">
+<span class="sig-prename descclassname"><span class="pre">AWS_SQS.</span></span><span class="sig-name descname"><span class="pre">watch_sqs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqs_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waittime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'us-east-1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">purge_queue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_SQS.watch_sqs" title="Permalink to this definition"></a></dt>
+<dd><p>Monitor an SQS for new messages. This is a blocking function that will
+wait until an SQS message appears.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>sqs_url</strong> (<em>str</em>) – The url of the SQS to monitor.</p></li>
+<li><p><strong>waittime</strong> (<em>int</em><em>, </em><em>optional</em>) – Time in seconds to wait for querying the SQS for new messages.
+The default is 0.</p></li>
+<li><p><strong>region</strong> (<em>str</em><em>, </em><em>optional</em>) – AWS region the SQS is in.
+The default is ‘us-east-1’.</p></li>
+<li><p><strong>purge_queue</strong> (<em>bool</em><em>, </em><em>optional</em>) – If true, each time a message is found, the entire SQS will
+be purged of all messages before proceeding.  This is useful if you
+have many workers that could submit messages to the SQS, but you only
+want 1 downstream job to trigger.
+The default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SQS messages.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_SQS.create_sqs_s3">
+<span class="sig-prename descclassname"><span class="pre">AWS_SQS.</span></span><span class="sig-name descname"><span class="pre">create_sqs_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_SQS.create_sqs_s3" title="Permalink to this definition"></a></dt>
+<dd><p>Create an SQS that accepts notifications from S3 bucket triggers. Note this
+function uses the SDK and is expected to be replaced with CDK in the
+future.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>queue_name</strong> (<em>str</em>) – Name of the SQS</p></li>
+<li><p><strong>account_number</strong> (<em>str</em>) – Account where the SQS will be created.</p></li>
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – Name of the s3 bucket to accept messages from.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SQS queue attributes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_SQS.delete_sqs">
+<span class="sig-prename descclassname"><span class="pre">AWS_SQS.</span></span><span class="sig-name descname"><span class="pre">delete_sqs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_SQS.delete_sqs" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an SQS. Note this
+function uses the SDK and is expected to be replaced with CDK in the
+future.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>queue_name</strong> (<em>str</em>) – Name of the SQS to delete.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, AWS AC Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS_sitewise module &mdash; twinmodules 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            twinmodules
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AWS_sitewise module</a><ul>
+<li><a class="reference internal" href="#AWS_sitewise.get_asset_propert_id"><code class="docutils literal notranslate"><span class="pre">get_asset_propert_id()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_sitewise.get_asset_property_data"><code class="docutils literal notranslate"><span class="pre">get_asset_property_data()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_sitewise.send_asset_property_data"><code class="docutils literal notranslate"><span class="pre">send_asset_property_data()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_sitewise.delete_asset_property_data"><code class="docutils literal notranslate"><span class="pre">delete_asset_property_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">twinmodules</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWS_sitewise module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/AWSModules/AWS_sitewise.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-AWS_sitewise">
+<span id="aws-sitewise-module"></span><h1>AWS_sitewise module<a class="headerlink" href="#module-AWS_sitewise" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_sitewise.get_asset_propert_id">
+<span class="sig-prename descclassname"><span class="pre">AWS_sitewise.</span></span><span class="sig-name descname"><span class="pre">get_asset_propert_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assetId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_sitewise.get_asset_propert_id" title="Permalink to this definition"></a></dt>
+<dd><p>Obtain the asset property ID.  If the sitewise database only includes
+one asset or uses uniquely named properties, the asset ID is not a
+required input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the property a user wants data for.</p></li>
+<li><p><strong>assetId</strong> (<em>str</em><em>, </em><em>optional</em>) – The asset ID that the user wants the data from.
+The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>asset_property_name, assetId, propertyId</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str and str and str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_sitewise.get_asset_property_data">
+<span class="sig-prename descclassname"><span class="pre">AWS_sitewise.</span></span><span class="sig-name descname"><span class="pre">get_asset_property_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assetId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxResults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_sitewise.get_asset_property_data" title="Permalink to this definition"></a></dt>
+<dd><p>Get the data for a specific property .If the sitewise database only includes
+one asset or uses uniquely named properties, the asset ID is not a
+required input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Measurement name / property name</p></li>
+<li><p><strong>assetId</strong> (<em>str</em><em>, </em><em>optional</em>) – If the name is unique, no assetId needs to be specified, but there are multiple
+assets with identical property names, the assetId is required. The default is None.</p></li>
+<li><p><strong>maxResults</strong> (<em>int</em><em>, </em><em>optional</em>) – The default is 100.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>[time, value]</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_sitewise.send_asset_property_data">
+<span class="sig-prename descclassname"><span class="pre">AWS_sitewise.</span></span><span class="sig-name descname"><span class="pre">send_asset_property_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assetId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_time_contrain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_current_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_sitewise.send_asset_property_data" title="Permalink to this definition"></a></dt>
+<dd><p>Send up data into a specific asset propety.</p>
+<p>If the sitewise database only includes
+one asset or uses uniquely named properties, the asset ID is not a
+required input.</p>
+<p>Note that currently AWS IoT Sitewise only allows for 100 data points
+per second upload rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Measurement name / property name</p></li>
+<li><p><strong>data_time</strong> (<em>list</em><em> or </em><em>np.array</em>) – Time data in seconds.</p></li>
+<li><p><strong>data</strong> (<em>list</em><em> or </em><em>np.array</em>) – Measurement data.</p></li>
+<li><p><strong>assetId</strong> (<em>str</em><em>, </em><em>optional</em>) – If the name is unique, no assetId needs to be specified, but there are multiple
+assets with identical property names, the assetId is required. The default is None.</p></li>
+<li><p><strong>ensure_time_contrain</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>AWS Sitewise requires that the time value be within 604800 seconds before and
+600 seconds after the current timestamp in seconds.  This optional will shift
+the provided time to meet this contraint.</p>
+<dl class="simple">
+<dt>Example:</dt><dd><p>time = [1, 2, …100]
+shift = current_time - time[0]
+updated_time = time + shift</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_sitewise.delete_asset_property_data">
+<span class="sig-prename descclassname"><span class="pre">AWS_sitewise.</span></span><span class="sig-name descname"><span class="pre">delete_asset_property_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assetId</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_sitewise.delete_asset_property_data" title="Permalink to this definition"></a></dt>
+<dd><p>Delete the existing data for a property.</p>
+<p>If the sitewise database only includes
+one asset or uses uniquely named properties, the asset ID is not a
+required input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the property to be deleted.</p></li>
+<li><p><strong>assetId</strong> (<em>str</em><em>, </em><em>optional</em>) – The specific asset to delete the data from.
+The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, AWS AC Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

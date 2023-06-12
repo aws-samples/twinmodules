@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWS_S3 module &mdash; twinmodules 0.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            twinmodules
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">AWS_S3 module</a><ul>
+<li><a class="reference internal" href="#AWS_S3.s3_object_exist"><code class="docutils literal notranslate"><span class="pre">s3_object_exist()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.s3_all_contents"><code class="docutils literal notranslate"><span class="pre">s3_all_contents()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.get_data_s3"><code class="docutils literal notranslate"><span class="pre">get_data_s3()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.send_data_s3"><code class="docutils literal notranslate"><span class="pre">send_data_s3()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.stream_send_s3_csv"><code class="docutils literal notranslate"><span class="pre">stream_send_s3_csv()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.stream_get_s3_csv"><code class="docutils literal notranslate"><span class="pre">stream_get_s3_csv()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.delete_data_s3"><code class="docutils literal notranslate"><span class="pre">delete_data_s3()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.create_s3_buckets"><code class="docutils literal notranslate"><span class="pre">create_s3_buckets()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.setup_s3_notifications"><code class="docutils literal notranslate"><span class="pre">setup_s3_notifications()</span></code></a></li>
+<li><a class="reference internal" href="#AWS_S3.delete_s3_bucket"><code class="docutils literal notranslate"><span class="pre">delete_s3_bucket()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">twinmodules</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AWS_S3 module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/AWSModules/AWS_S3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-AWS_S3">
+<span id="aws-s3-module"></span><h1>AWS_S3 module<a class="headerlink" href="#module-AWS_S3" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.s3_object_exist">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">s3_object_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.s3_object_exist" title="Permalink to this definition"></a></dt>
+<dd><p>Determine if an object exists in a specific s3 bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>object_name</strong> (<em>str</em>) – Can include s3 key</p></li>
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if it exists.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.s3_all_contents">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">s3_all_contents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.s3_all_contents" title="Permalink to this definition"></a></dt>
+<dd><p>Return a list of all objects in an s3 bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>folder_name</strong> (<em>str</em>) – Folder or s3 key name, can be ‘’ if looking for objects in
+root s3 bucket directory.</p></li>
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all objects in a specific
+s3_bucket_name/folder_name</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.get_data_s3">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">get_data_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_data_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_to_get</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.get_data_s3" title="Permalink to this definition"></a></dt>
+<dd><p>Download an s3 object from the ‘bucket_name’.</p>
+<p>First checks if object exists, if not a warning is thrown
+and the function returns none.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>local_data_path</strong> (<em>str</em>) – Location on the local file system to copy the object into.</p></li>
+<li><p><strong>file_to_get</strong> (<em>str</em>) – The s3 object name to download, can include the s3 key if
+multiple folders in the bucket.</p></li>
+<li><p><strong>bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.send_data_s3">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">send_data_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_data_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.send_data_s3" title="Permalink to this definition"></a></dt>
+<dd><p>Simple pass through to boto3. Included for completeness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>local_data_path</strong> (<em>str</em>) – File include path to be uploaded to the s3 bucket.</p></li>
+<li><p><strong>remote_filename</strong> (<em>str</em>) – The name with key to upload to the s3 bucket.</p></li>
+<li><p><strong>bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.stream_send_s3_csv">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">stream_send_s3_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.stream_send_s3_csv" title="Permalink to this definition"></a></dt>
+<dd><p>Directly upload a pandas dataframe to a csv file in an s3 bucket.</p>
+<p>Simple pass through to awswrangler, very likely deprecate this function
+since it currently adds little value.</p>
+<p>See awswrangler for many more options:
+<a class="reference external" href="https://aws-sdk-pandas.readthedocs.io/en/stable/stubs/awswrangler.s3.to_csv.html#awswrangler.s3.to_csv">https://aws-sdk-pandas.readthedocs.io/en/stable/stubs/awswrangler.s3.to_csv.html#awswrangler.s3.to_csv</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – </p></li>
+<li><p><strong>remote_filename</strong> (<em>str</em>) – Can include s3 key</p></li>
+<li><p><strong>bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.stream_get_s3_csv">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">stream_get_s3_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.stream_get_s3_csv" title="Permalink to this definition"></a></dt>
+<dd><p>Directly download a csv file into a pandas dataframe.</p>
+<p>Simple pass through to awswrangler, very likely deprecate this function
+since it currently adds little value.</p>
+<p>This function does check if the s3 object exists first and will return a blank
+dataframe if the file does not exist.</p>
+<p>See awswrangler for many more options:
+<a class="reference external" href="https://aws-sdk-pandas.readthedocs.io/en/stable/stubs/awswrangler.s3.read_csv.html#awswrangler.s3.read_csv">https://aws-sdk-pandas.readthedocs.io/en/stable/stubs/awswrangler.s3.read_csv.html#awswrangler.s3.read_csv</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>remote_filename</strong> (<em>str</em>) – Remote file including s3 key</p></li>
+<li><p><strong>bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.delete_data_s3">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">delete_data_s3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.delete_data_s3" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an object from s3 bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>remote_filename</strong> (<em>str</em>) – Object to delete, can include s3 key.</p></li>
+<li><p><strong>bucket_name</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.create_s3_buckets">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">create_s3_buckets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.create_s3_buckets" title="Permalink to this definition"></a></dt>
+<dd><p>Create an s3 bucket using the SDK.  All public access
+to this bucket will be shutoff. Note this function is
+expected to be replaced with CDK in the future.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>region</strong> (<em>str</em>) – AWS region where the bucket will be created</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.setup_s3_notifications">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">setup_s3_notifications</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notification_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.setup_s3_notifications" title="Permalink to this definition"></a></dt>
+<dd><p>Setup event notifications for an s3 bucket. This uses the AWS SDK and
+is expected to be replaced with CDK in the future.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>queue_attributes</strong> (<em>str</em>) – The notifications will be sent to the SQS at this ARN.</p></li>
+<li><p><strong>notification_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>prefix</strong> (<em>str</em>) – Only look at changes for objects with this prefix (i.e. objects in this s3 folder)</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="AWS_S3.delete_s3_bucket">
+<span class="sig-prename descclassname"><span class="pre">AWS_S3.</span></span><span class="sig-name descname"><span class="pre">delete_s3_bucket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">account_number</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_S3.delete_s3_bucket" title="Permalink to this definition"></a></dt>
+<dd><p>Delete the s3 bucket. Note this uses the AWS SDK and is
+expected to be replaced with CDK in the future. Users
+are assumed to have proper IAM access or this function
+will fail for security reasons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>s3_bucket_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>account_number</strong> (<em>str</em>) – The account where the s3 bucket resides.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, AWS AC Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
