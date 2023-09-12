@@ -216,10 +216,10 @@ def setup_uncertainty_propagation_db(config:dict,
         #reconnect to new database
         sql.connect()
 
-        tables = ['uncertainty_propagation_samples',
-                  'uncertainty_propagation_pdf',
-                  'uncertainty_propagation_cdf',
-                  'uncertainty_propagation_sensitivity']
+        tables = ['UncertaintyPropagationSamples',
+                  'UncertaintyPropagationPDF',
+                  'UncertaintyPropagationCDF',
+                  'UncertaintyPropagationSensitivity']
 
         if delete_existing_table:
             for table in tables:
@@ -436,12 +436,27 @@ def is_steady_state(input_signal:np.array,
     # plot.scatter(time,signal)
     # plot.plot(time, line.predict(time))
 
-
-
-
-
-
-
-
-
 #-------------------------------------------------------------------------------------
+
+#TODO: add docstring
+def get_cloudformation_metadata(stackname:str, region:str=None)-> dict:
+    try:
+        client = boto3.client('cloudformation')
+    except:
+        if region is None:
+            raise ValueError("ERROR: region needs to be specified if not an env var.")
+        client = boto3.client('cloudformation', region_name=region)
+
+    response = client.list_stack_resources(
+                    StackName=stackname
+                    )
+    metadata={}
+    for entry in response['StackResourceSummaries']:
+        if 'SiteWise' in entry['ResourceType']  \
+          or 'Batch' in entry['ResourceType']   \
+          or 'S3' in entry['ResourceType']      \
+          or 'IAM' in entry['ResourceType']:
+            metadata[entry['LogicalResourceId']] = entry['PhysicalResourceId']
+
+    metadata = {key:value for key, value in metadata.items() if 'Default' not in key}
+    return metadata

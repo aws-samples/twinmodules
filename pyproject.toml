@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "twinmodules"
-version = "0.1.0"
+version = "0.2.0"
 description = "\"Commonly used modules for creating L3/L4 digital twins including cloud interaction.  Part of the TwinFlow suite. \""
 authors = ["AWS AC Team"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-awswrangler="2.20.1"
+awswrangler="^2.20.1"
 boto3="^1.26.120"
 botocore="^1.29.120"
 docker="^6.0.1"
