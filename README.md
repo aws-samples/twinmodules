@@ -4,6 +4,7 @@ The goal of TwinModules is to provide a python API that reduces the time spent c
 
 TwinModules is part of the [TwinFlow](https://github.com/aws-samples/twinflow) toolset which can be read about in this [blog](https://aws.amazon.com/blogs/hpc/predictive-models-and-simulations-with-twinflow-on-aws/). Other tools within TwinFlow are [TwinStat](https://github.com/aws-samples/twinstat), which provides a few data science tools needed for Level 4 digital twins, and [TwinGraph](https://github.com/aws-samples/twingraph), which enables scalable graph orchestration.
 
+
 Supported functionality includes, but will not be limited to:
 - Building docker images and pushing to AWS ECR
 - Tools for push and pulling data from:
@@ -12,6 +13,7 @@ Supported functionality includes, but will not be limited to:
   - AWS SQS
   - AWS Timestream
   - AWS RDS
+  - AWS CloudFormation metadata
 - Tools for HPC style job execution utilizing AWS Batch
 - Automation (Intended to be used in conjunction with TwinStat):
   - Autoscaling virtual sensors

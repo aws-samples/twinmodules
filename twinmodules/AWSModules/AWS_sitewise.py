@@ -11,14 +11,9 @@ from tqdm import tqdm
 from datetime import datetime
 import time
 
-#TODO: convert this modules to object and allow user to set region
-# if not already set in env var
-try:
-    iot_sw_client = boto3.client('iotsitewise')
-except:
-    iot_sw_client = boto3.client('iotsitewise', region_name='us-east-1')
+#TODO: Update doc strings for entire module
 
-def get_asset_propert_id(name:str, assetId:str=None) -> str and str and str:
+def get_asset_propert_id(name:str, assetId:str=None, region_name:str='us-east-1') -> str and str and str:
     '''
     Obtain the asset property ID.  If the sitewise database only includes
     one asset or uses uniquely named properties, the asset ID is not a
@@ -39,6 +34,9 @@ def get_asset_propert_id(name:str, assetId:str=None) -> str and str and str:
         asset_property_name, assetId, propertyId
 
     '''
+
+    iot_sw_client = boto3.client('iotsitewise', region_name=region_name)
+
     available_timeseries = iot_sw_client.list_time_series()
     found = False
 
@@ -76,7 +74,9 @@ def get_asset_propert_id(name:str, assetId:str=None) -> str and str and str:
 
 #---------------------------------------------------------------------------
 
-def get_asset_property_data(name:str, assetId:str=None, maxResults:int=100) -> pandas.DataFrame:
+def get_asset_property_data(name:str, assetId:str=None,
+                            maxResults:int=100,
+                            region_name:str='us-east-1') -> pandas.DataFrame:
     '''
     Get the data for a specific property .If the sitewise database only includes
     one asset or uses uniquely named properties, the asset ID is not a
@@ -98,6 +98,8 @@ def get_asset_property_data(name:str, assetId:str=None, maxResults:int=100) -> p
         [time, value]
     '''
 
+    iot_sw_client = boto3.client('iotsitewise', region_name=region_name)
+    
     #name = 'RPM'
     asset_property_name, assetId, propertyId = get_asset_propert_id(name, assetId=assetId)
 
@@ -133,6 +135,7 @@ def send_asset_property_data(name:str,
                              ensure_time_contrain:bool=True,
                              use_current_time:bool=True,
                              use_time:float=0.0,
+                             region_name:str='us-east-1'
                              ) -> None:
     '''
 
@@ -171,6 +174,8 @@ def send_asset_property_data(name:str,
     None
 
     '''
+
+    iot_sw_client = boto3.client('iotsitewise', region_name=region_name)
 
     data = np.array(data)
     data_time = np.array(data_time)
@@ -235,7 +240,8 @@ def send_asset_property_data(name:str,
 
 #---------------------------------------------------------------------------
 def delete_asset_property_data(name:str,
-                               assetId:str=None
+                               assetId:str=None,
+                               region_name:str='us-east-1'
                                ) -> None:
     '''
     Delete the existing data for a property.
@@ -257,6 +263,8 @@ def delete_asset_property_data(name:str,
     None
 
     '''
+
+    iot_sw_client = boto3.client('iotsitewise', region_name=region_name)
 
     asset_property_name, assetId, propertyId = get_asset_propert_id(name, assetId=assetId)
 
@@ -297,7 +305,3 @@ if __name__ == '__main__':
                              times, rpm,
                              assetId = '7e305d69-ad67-4e51-9ea2-2a763d9711ad'
                              )
-
-
-
-
