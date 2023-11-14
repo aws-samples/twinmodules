@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWSModules &mdash; twinmodules 0.2.0 documentation</title>
+  <title>AWSModules &mdash; twinmodules 0.3.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e259d695"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -70,8 +70,114 @@
            <div itemprop="articleBody">
              
   <section id="awsmodules">
-<h1>AWSModules<a class="headerlink" href="#awsmodules" title="Permalink to this heading"></a></h1>
+<h1>AWSModules<a class="headerlink" href="#awsmodules" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWSBatch.html">AWSBatch module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch"><code class="docutils literal notranslate"><span class="pre">batch</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.sendBatchJob"><code class="docutils literal notranslate"><span class="pre">batch.sendBatchJob()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.removeJobDefinition"><code class="docutils literal notranslate"><span class="pre">batch.removeJobDefinition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.defineBatchJob"><code class="docutils literal notranslate"><span class="pre">batch.defineBatchJob()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.generateBatch"><code class="docutils literal notranslate"><span class="pre">batch.generateBatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.terminateBatch"><code class="docutils literal notranslate"><span class="pre">batch.terminateBatch()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.wait_for_jobs_finish"><code class="docutils literal notranslate"><span class="pre">batch.wait_for_jobs_finish()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.kill_jobs"><code class="docutils literal notranslate"><span class="pre">batch.kill_jobs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWSBatch.html#AWSBatch.batch.get_running_jobs"><code class="docutils literal notranslate"><span class="pre">batch.get_running_jobs()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_ECR.html">AWS_ECR module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_ECR.html#AWS_ECR.containerize"><code class="docutils literal notranslate"><span class="pre">containerize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_IAM.html">AWS_IAM module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.is_role_available"><code class="docutils literal notranslate"><span class="pre">is_role_available()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.is_policy_available"><code class="docutils literal notranslate"><span class="pre">is_policy_available()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.create_role"><code class="docutils literal notranslate"><span class="pre">create_role()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.attach_policies"><code class="docutils literal notranslate"><span class="pre">attach_policies()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.create_twinflow_policy"><code class="docutils literal notranslate"><span class="pre">create_twinflow_policy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.create_instance_profile"><code class="docutils literal notranslate"><span class="pre">create_instance_profile()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_IAM.html#AWS_IAM.create_twinflow_IAM_role"><code class="docutils literal notranslate"><span class="pre">create_twinflow_IAM_role()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_S3.html">AWS_S3 module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.s3_object_exist"><code class="docutils literal notranslate"><span class="pre">s3_object_exist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.s3_all_contents"><code class="docutils literal notranslate"><span class="pre">s3_all_contents()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.get_data_s3"><code class="docutils literal notranslate"><span class="pre">get_data_s3()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.send_data_s3"><code class="docutils literal notranslate"><span class="pre">send_data_s3()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.stream_send_s3_csv"><code class="docutils literal notranslate"><span class="pre">stream_send_s3_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.stream_get_s3_csv"><code class="docutils literal notranslate"><span class="pre">stream_get_s3_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.delete_data_s3"><code class="docutils literal notranslate"><span class="pre">delete_data_s3()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.create_s3_buckets"><code class="docutils literal notranslate"><span class="pre">create_s3_buckets()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.setup_s3_notifications"><code class="docutils literal notranslate"><span class="pre">setup_s3_notifications()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_S3.html#AWS_S3.delete_s3_bucket"><code class="docutils literal notranslate"><span class="pre">delete_s3_bucket()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_SQS.html">AWS_SQS module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_SQS.html#AWS_SQS.watch_sqs"><code class="docutils literal notranslate"><span class="pre">watch_sqs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_SQS.html#AWS_SQS.create_sqs_s3"><code class="docutils literal notranslate"><span class="pre">create_sqs_s3()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_SQS.html#AWS_SQS.delete_sqs"><code class="docutils literal notranslate"><span class="pre">delete_sqs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_secrets.html">AWS_secrets module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_secrets.html#AWS_secrets.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_sitewise.html">AWS_sitewise module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_sitewise.html#AWS_sitewise.get_asset_propert_id"><code class="docutils literal notranslate"><span class="pre">get_asset_propert_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_sitewise.html#AWS_sitewise.get_asset_property_data"><code class="docutils literal notranslate"><span class="pre">get_asset_property_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_sitewise.html#AWS_sitewise.send_asset_property_data"><code class="docutils literal notranslate"><span class="pre">send_asset_property_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_sitewise.html#AWS_sitewise.delete_asset_property_data"><code class="docutils literal notranslate"><span class="pre">delete_asset_property_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AWSModules/AWS_timestream.html">AWS_timestream module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AWSModules/AWS_timestream.html#AWS_timestream.timestream"><code class="docutils literal notranslate"><span class="pre">timestream</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWS_timestream.html#AWS_timestream.timestream.delete_database"><code class="docutils literal notranslate"><span class="pre">timestream.delete_database()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWS_timestream.html#AWS_timestream.timestream.delete_table"><code class="docutils literal notranslate"><span class="pre">timestream.delete_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWS_timestream.html#AWS_timestream.timestream.send_data"><code class="docutils literal notranslate"><span class="pre">timestream.send_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="AWSModules/AWS_timestream.html#AWS_timestream.timestream.get_data"><code class="docutils literal notranslate"><span class="pre">timestream.get_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/components.html">components module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/components.html#components.autoscale_sensors"><code class="docutils literal notranslate"><span class="pre">autoscale_sensors()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/components.html#components.evaluate_data"><code class="docutils literal notranslate"><span class="pre">evaluate_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/components.html#components.run_transient"><code class="docutils literal notranslate"><span class="pre">run_transient()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/components.html#components.run_fmu"><code class="docutils literal notranslate"><span class="pre">run_fmu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/sql_databases.html">sql_databases module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler"><code class="docutils literal notranslate"><span class="pre">SQLHandler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.database_exist"><code class="docutils literal notranslate"><span class="pre">SQLHandler.database_exist()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.connect"><code class="docutils literal notranslate"><span class="pre">SQLHandler.connect()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.create_db"><code class="docutils literal notranslate"><span class="pre">SQLHandler.create_db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.delete_db"><code class="docutils literal notranslate"><span class="pre">SQLHandler.delete_db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.create_table"><code class="docutils literal notranslate"><span class="pre">SQLHandler.create_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.get_tables"><code class="docutils literal notranslate"><span class="pre">SQLHandler.get_tables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.send_sql_data"><code class="docutils literal notranslate"><span class="pre">SQLHandler.send_sql_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.delete_sql_data_table"><code class="docutils literal notranslate"><span class="pre">SQLHandler.delete_sql_data_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.get_sql_column_names"><code class="docutils literal notranslate"><span class="pre">SQLHandler.get_sql_column_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="core/sql_databases.html#sql_databases.SQLHandler.get_sql_data"><code class="docutils literal notranslate"><span class="pre">SQLHandler.get_sql_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="core/sql_databases.html#sql_databases.get_dataframe_results"><code class="docutils literal notranslate"><span class="pre">get_dataframe_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="core/util.html">util module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.get_user_json_config"><code class="docutils literal notranslate"><span class="pre">get_user_json_config()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.get_user_data"><code class="docutils literal notranslate"><span class="pre">get_user_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.sqs_wait"><code class="docutils literal notranslate"><span class="pre">sqs_wait()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.get_calibration_data"><code class="docutils literal notranslate"><span class="pre">get_calibration_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.setup_uncertainty_propagation_db"><code class="docutils literal notranslate"><span class="pre">setup_uncertainty_propagation_db()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.setup_sql_db"><code class="docutils literal notranslate"><span class="pre">setup_sql_db()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.is_steady_state"><code class="docutils literal notranslate"><span class="pre">is_steady_state()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.exponential_backoff"><code class="docutils literal notranslate"><span class="pre">exponential_backoff()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="core/util.html#util.get_cloudformation_metadata"><code class="docutils literal notranslate"><span class="pre">get_cloudformation_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 

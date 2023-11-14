@@ -10,6 +10,8 @@ import pandas
 
 def s3_object_exist(object_name:str, s3_bucket_name:str) -> bool:
     '''
+    **Deprecated:** AWS Wrangler now includes all of these features.
+
     Determine if an object exists in a specific s3 bucket.
 
     Parameters
@@ -74,6 +76,8 @@ def get_data_s3(local_data_path: str,
                 file_to_get: str,
                 bucket_name: str) -> None:
     '''
+    **Deprecated:** AWS Wrangler now includes all of these features.
+
     Download an s3 object from the 'bucket_name'.
 
     First checks if object exists, if not a warning is thrown
@@ -105,6 +109,9 @@ def send_data_s3(local_data_path:str,
                  remote_filename: str,
                  bucket_name: str) -> None:
     '''
+
+    **Deprecated:** AWS Wrangler now includes all of these features.
+
     Simple pass through to boto3. Included for completeness.
 
     Parameters
@@ -130,6 +137,9 @@ def stream_send_s3_csv(df:pandas.DataFrame,
                        remote_filename: str,
                        bucket_name: str) -> None:
     '''
+
+    **Deprecated:** AWS Wrangler now includes all of these features.
+
     Directly upload a pandas dataframe to a csv file in an s3 bucket.
 
     Simple pass through to awswrangler, very likely deprecate this function
@@ -158,6 +168,8 @@ def stream_send_s3_csv(df:pandas.DataFrame,
 def stream_get_s3_csv( remote_filename: str,
                        bucket_name: str) -> pandas.DataFrame:
     '''
+
+    **Deprecated:** AWS Wrangler now includes all of these features.
 
     Directly download a csv file into a pandas dataframe.
 
@@ -194,6 +206,9 @@ def stream_get_s3_csv( remote_filename: str,
 def delete_data_s3(remote_filename: str,
                    bucket_name: str) -> None:
     '''
+
+    **Deprecated:** AWS Wrangler now includes all of these features.
+
     Delete an object from s3 bucket.
 
     Parameters
@@ -218,6 +233,9 @@ def delete_data_s3(remote_filename: str,
 def create_s3_buckets(s3_bucket_name:str,
                       region:str) -> None:
     '''
+
+    **Deprecated:** Please use AWS CDK
+
     Create an s3 bucket using the SDK.  All public access
     to this bucket will be shutoff. Note this function is
     expected to be replaced with CDK in the future.
@@ -256,9 +274,11 @@ def create_s3_buckets(s3_bucket_name:str,
 
 #-------------------------------------------------------------------------------------
 
-#TODO: at some point probably want the notification type to be user modifiable
 def setup_s3_notifications(s3_bucket_name:str, queue_attributes:str, notification_name:str, prefix:str) -> None:
     '''
+
+    **Deprecated:** Please use AWS CDK
+
     Setup event notifications for an s3 bucket. This uses the AWS SDK and
     is expected to be replaced with CDK in the future.
 
@@ -317,6 +337,9 @@ def setup_s3_notifications(s3_bucket_name:str, queue_attributes:str, notificatio
 
 def delete_s3_bucket(s3_bucket_name:str, account_number:str) -> None:
     '''
+
+    **Deprecated:** Please use AWS CDK
+
     Delete the s3 bucket. Note this uses the AWS SDK and is
     expected to be replaced with CDK in the future. Users
     are assumed to have proper IAM access or this function

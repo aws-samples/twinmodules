@@ -82,6 +82,9 @@ def watch_sqs(sqs_url:str, waittime:int=0, region:str='us-east-1', purge_queue:b
 
 def create_sqs_s3(queue_name:str, account_number:str, s3_bucket_name:str) -> dict:
     '''
+
+    Deprecated: use CDK instead
+
     Create an SQS that accepts notifications from S3 bucket triggers. Note this
     function uses the SDK and is expected to be replaced with CDK in the
     future.
@@ -153,6 +156,9 @@ def create_sqs_s3(queue_name:str, account_number:str, s3_bucket_name:str) -> dic
 
 def delete_sqs(queue_name:str) -> None:
     '''
+
+    Deprecated: use CDK instead
+
     Delete an SQS. Note this
     function uses the SDK and is expected to be replaced with CDK in the
     future.

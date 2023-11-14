@@ -10,6 +10,10 @@ import boto3
 
 class timestream(object):
     '''
+
+        **Deprecated:** AWS Wrangler now includes all of these features.
+
+
         Auto-setup SQL queries and utilize the awswrangler package
         to submit/query pandas dataframes to AWS Timestream database.
 

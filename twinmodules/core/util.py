@@ -7,9 +7,9 @@
 import json
 import boto3
 import os
-import pandas
 import numpy as np
-
+import time
+from functools import wraps
 
 from twinmodules.AWSModules.AWS_S3 import s3_all_contents, get_data_s3
 from twinmodules.AWSModules.AWS_secrets import get_secret
@@ -281,6 +281,7 @@ def setup_sql_db(config:dict,
 
     Example:
         .. code-block:: python
+
             config = {
                 'input_0': "sprocket_1",
                 'output_0': "flowrate_14"
@@ -436,10 +437,84 @@ def is_steady_state(input_signal:np.array,
     # plot.scatter(time,signal)
     # plot.plot(time, line.predict(time))
 
-#-------------------------------------------------------------------------------------
 
-#TODO: add docstring
+#-------------------------------------------------------------------------------------
+def exponential_backoff(max_retries:int=20, base_delay:float=1, max_delay:float=32) -> None:
+    '''
+    A decorator function to enable exponential backoff
+
+    Parameters
+    ----------
+    max_retries : int, optional
+         The default is 20.
+    base_delay : float, optional
+         The default is 1.
+    max_delay : float, optional
+         The default is 32.
+
+
+    Example:
+        .. code-block:: python
+
+            @exponential_backoff()
+            def myfunctioncalls():
+                print('do stuff')
+
+    '''
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            retries = 0
+            while retries < max_retries:
+                try:
+                    result = func(*args, **kwargs)
+                    return result
+                except Exception as e:
+                    if 'throttling' in str(e).lower() \
+                        or "ResourceNotFound" in str(e) \
+                        or "TooManyRequestsException" in str(e) \
+                        or "ProvisionedThroughputExceededException" in str(e) \
+                        or "ConnectionClosedError" in str(e):
+                        delay = min(base_delay * (2 ** retries), max_delay)
+                        retries += 1
+                        if retries >= max_retries:
+                            raise e
+                        jitter = np.random.uniform()
+                        time.sleep(delay + jitter)
+                    else:
+                        raise e
+
+        return wrapper
+    return decorator
+
+#-------------------------------------------------------------------------------------
+@exponential_backoff()
 def get_cloudformation_metadata(stackname:str, region:str=None)-> dict:
+    '''
+    Parse and reduce raw cloud formation metadata down to small
+    python dictionary
+
+    Parameters
+    ----------
+    stackname : str
+        Name of the cloud formation stack
+    region : str, optional
+        AWS region of account. The default is None.
+
+    Returns
+    -------
+    dict
+        Function returns metadata for:
+            * SiteWise
+            * Batch
+            * S3
+            * DynamoDB
+            * RDS
+            * IAM
+            * SQS
+            * IAM
+            * Timestream
+    '''
     try:
         client = boto3.client('cloudformation')
     except:
@@ -450,13 +525,22 @@ def get_cloudformation_metadata(stackname:str, region:str=None)-> dict:
     response = client.list_stack_resources(
                     StackName=stackname
                     )
+
     metadata={}
     for entry in response['StackResourceSummaries']:
-        if 'SiteWise' in entry['ResourceType']  \
-          or 'Batch' in entry['ResourceType']   \
-          or 'S3' in entry['ResourceType']      \
+        #print(entry)
+        if 'SiteWise' in entry['ResourceType']   \
+          or 'Batch' in entry['ResourceType']    \
+          or 'S3' in entry['ResourceType']       \
+          or 'DynamoDB' in entry['ResourceType'] \
+          or 'RDS' in entry['ResourceType']      \
+          or 'timestream' in entry['ResourceType'].lower() \
+          or 'sqs' in entry['ResourceType'].lower() \
           or 'IAM' in entry['ResourceType']:
             metadata[entry['LogicalResourceId']] = entry['PhysicalResourceId']
 
     metadata = {key:value for key, value in metadata.items() if 'Default' not in key}
     return metadata
+
+
+
