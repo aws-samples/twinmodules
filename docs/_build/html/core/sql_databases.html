@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sql_databases module &mdash; twinmodules 0.2.0 documentation</title>
+  <title>sql_databases module &mdash; twinmodules 0.3.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=e259d695"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -86,10 +86,10 @@
            <div itemprop="articleBody">
              
   <section id="module-sql_databases">
-<span id="sql-databases-module"></span><h1>sql_databases module<a class="headerlink" href="#module-sql_databases" title="Permalink to this heading"></a></h1>
+<span id="sql-databases-module"></span><h1>sql_databases module<a class="headerlink" href="#module-sql_databases" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sql_databases.</span></span><span class="sig-name descname"><span class="pre">SQLHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mysql_db_endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sql_databases.</span></span><span class="sig-name descname"><span class="pre">SQLHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mysql_db_endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Enables managing data in a mysql database such
 as AWS RDS cloud service.</p>
@@ -118,7 +118,7 @@ restablish connection specificaly to the database.</p></li>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.database_exist">
-<span class="sig-name descname"><span class="pre">database_exist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.database_exist" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">database_exist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.database_exist" title="Link to this definition"></a></dt>
 <dd><p>Check if the database exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -135,7 +135,7 @@ restablish connection specificaly to the database.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.connect" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.connect" title="Link to this definition"></a></dt>
 <dd><p>Establish connection to the database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -149,7 +149,7 @@ restablish connection specificaly to the database.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.create_db">
-<span class="sig-name descname"><span class="pre">create_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.create_db" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.create_db" title="Link to this definition"></a></dt>
 <dd><p>Create the database if it does not exist.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -163,7 +163,7 @@ restablish connection specificaly to the database.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.delete_db">
-<span class="sig-name descname"><span class="pre">delete_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.delete_db" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.delete_db" title="Link to this definition"></a></dt>
 <dd><p>Attempt to delete the database, but will
 gracefully exit if there are existing
 connections to the database.</p>
@@ -179,7 +179,7 @@ connections to the database.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.create_table">
-<span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.create_table" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.create_table" title="Link to this definition"></a></dt>
 <dd><p>Create a table with the schema define by the ‘columns’.
 The unique table key labeled as (id)</p>
 <dl class="field-list simple">
@@ -191,14 +191,12 @@ The unique table key labeled as (id)</p>
 <li><p><strong>table_name</strong> (<em>str</em>) – </p></li>
 <li><p><strong>columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <p>List of sql schema strings such as:</p>
 <blockquote>
-<div><dl>
-<dt>columns = [</dt><dd><blockquote>
-<div><p>‘batch int’,
-‘flowrate double’</p>
-</div></blockquote>
-<p>]</p>
-</dd>
-</dl>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;batch int&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;flowrate double&#39;</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
 </div></blockquote>
 </p></li>
 </ul>
@@ -211,7 +209,7 @@ The unique table key labeled as (id)</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.get_tables">
-<span class="sig-name descname"><span class="pre">get_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_tables" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_tables" title="Link to this definition"></a></dt>
 <dd><p>Returns a list of all the tables in the
 specified database.</p>
 <dl class="field-list simple">
@@ -229,7 +227,7 @@ specified database.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.send_sql_data">
-<span class="sig-name descname"><span class="pre">send_sql_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.send_sql_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send_sql_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.send_sql_data" title="Link to this definition"></a></dt>
 <dd><p>Insert the data provided in the ‘data’ list into the SQL table.
 The function will batch submit data.</p>
 <dl class="field-list simple">
@@ -253,7 +251,7 @@ inserted into the SQL database</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.delete_sql_data_table">
-<span class="sig-name descname"><span class="pre">delete_sql_data_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.delete_sql_data_table" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete_sql_data_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.delete_sql_data_table" title="Link to this definition"></a></dt>
 <dd><p>Delete all data in the table.  The table itself will not
 be deleted unless specified.</p>
 <dl class="field-list simple">
@@ -275,7 +273,7 @@ The default is True.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.get_sql_column_names">
-<span class="sig-name descname"><span class="pre">get_sql_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_sql_column_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_sql_column_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_sql_column_names" title="Link to this definition"></a></dt>
 <dd><p>Return the column names from an SQL table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -292,7 +290,7 @@ The default is True.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sql_databases.SQLHandler.get_sql_data">
-<span class="sig-name descname"><span class="pre">get_sql_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_sql_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_sql_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.SQLHandler.get_sql_data" title="Link to this definition"></a></dt>
 <dd><p>Return a list of all data from the SQL table.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -311,7 +309,7 @@ The default is True.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sql_databases.get_dataframe_results">
-<span class="sig-prename descclassname"><span class="pre">sql_databases.</span></span><span class="sig-name descname"><span class="pre">get_dataframe_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.get_dataframe_results" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">sql_databases.</span></span><span class="sig-name descname"><span class="pre">get_dataframe_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sql_databases.get_dataframe_results" title="Link to this definition"></a></dt>
 <dd><p>Using the ‘mysql_db_endpoint’ and ‘database_name’ in the config
 dictionary, obtain all data from the ‘table’ and return in
 a pandas DataFrame</p>

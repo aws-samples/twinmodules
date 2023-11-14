@@ -214,10 +214,12 @@ class SQLHandler(object):
         columns : list[str]
             List of sql schema strings such as:
 
-                columns = [
-                            'batch int',
-                            'flowrate double'
-                    ]
+                .. code-block:: python
+
+                    columns = [
+                                'batch int',
+                                'flowrate double'
+                        ]
 
         Returns
         -------

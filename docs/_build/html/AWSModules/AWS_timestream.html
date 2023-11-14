@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWS_timestream module &mdash; twinmodules 0.2.0 documentation</title>
+  <title>AWS_timestream module &mdash; twinmodules 0.3.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=e259d695"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -79,11 +79,12 @@
            <div itemprop="articleBody">
              
   <section id="module-AWS_timestream">
-<span id="aws-timestream-module"></span><h1>AWS_timestream module<a class="headerlink" href="#module-AWS_timestream" title="Permalink to this heading"></a></h1>
+<span id="aws-timestream-module"></span><h1>AWS_timestream module<a class="headerlink" href="#module-AWS_timestream" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="AWS_timestream.timestream">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AWS_timestream.</span></span><span class="sig-name descname"><span class="pre">timestream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">AWS_timestream.</span></span><span class="sig-name descname"><span class="pre">timestream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><strong>Deprecated:</strong> AWS Wrangler now includes all of these features.</p>
 <p>Auto-setup SQL queries and utilize the awswrangler package
 to submit/query pandas dataframes to AWS Timestream database.</p>
 <p>If tables or database do not exist, they will be
@@ -101,7 +102,7 @@ automatically generated.</p>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="AWS_timestream.timestream.delete_database">
-<span class="sig-name descname"><span class="pre">delete_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.delete_database" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.delete_database" title="Link to this definition"></a></dt>
 <dd><p>Delete the timestream database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -118,7 +119,7 @@ automatically generated.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AWS_timestream.timestream.delete_table">
-<span class="sig-name descname"><span class="pre">delete_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.delete_table" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">delete_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.delete_table" title="Link to this definition"></a></dt>
 <dd><p>Delete a table within the timestream database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -137,7 +138,7 @@ The default is None.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AWS_timestream.timestream.send_data">
-<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.send_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.send_data" title="Link to this definition"></a></dt>
 <dd><p>Send data to an AWS Timestream database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -163,7 +164,7 @@ The default is [].</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="AWS_timestream.timestream.get_data">
-<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">most_recent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.get_data" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">get_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">most_recent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AWS_timestream.timestream.get_data" title="Link to this definition"></a></dt>
 <dd><p>Submits an SQL query to Timestream to obtain all
 data from the database</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span><span class="s2">&quot;{database}&quot;</span>.<span class="s2">&quot;{table}&quot;</span>

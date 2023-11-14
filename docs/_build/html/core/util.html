@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>util module &mdash; twinmodules 0.2.0 documentation</title>
+  <title>util module &mdash; twinmodules 0.3.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=e259d695"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -50,6 +50,8 @@
 <li><a class="reference internal" href="#util.setup_uncertainty_propagation_db"><code class="docutils literal notranslate"><span class="pre">setup_uncertainty_propagation_db()</span></code></a></li>
 <li><a class="reference internal" href="#util.setup_sql_db"><code class="docutils literal notranslate"><span class="pre">setup_sql_db()</span></code></a></li>
 <li><a class="reference internal" href="#util.is_steady_state"><code class="docutils literal notranslate"><span class="pre">is_steady_state()</span></code></a></li>
+<li><a class="reference internal" href="#util.exponential_backoff"><code class="docutils literal notranslate"><span class="pre">exponential_backoff()</span></code></a></li>
+<li><a class="reference internal" href="#util.get_cloudformation_metadata"><code class="docutils literal notranslate"><span class="pre">get_cloudformation_metadata()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -79,10 +81,10 @@
            <div itemprop="articleBody">
              
   <section id="module-util">
-<span id="util-module"></span><h1>util module<a class="headerlink" href="#module-util" title="Permalink to this heading"></a></h1>
+<span id="util-module"></span><h1>util module<a class="headerlink" href="#module-util" title="Link to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="util.get_user_json_config">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_user_json_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.get_user_json_config" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_user_json_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.get_user_json_config" title="Link to this definition"></a></dt>
 <dd><p>Read a json file and return as dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -99,7 +101,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.get_user_data">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_user_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#util.get_user_data" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_user_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#util.get_user_data" title="Link to this definition"></a></dt>
 <dd><p>Get the user metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -116,7 +118,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.sqs_wait">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">sqs_wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.sqs_wait" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">sqs_wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.sqs_wait" title="Link to this definition"></a></dt>
 <dd><p>Deprecated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -127,7 +129,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.get_calibration_data">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_calibration_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.get_calibration_data" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_calibration_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.get_calibration_data" title="Link to this definition"></a></dt>
 <dd><p>Download to local file system all data in a folder of an
 s3 bucket.</p>
 <dl class="field-list simple">
@@ -151,7 +153,7 @@ s3 bucket.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.setup_uncertainty_propagation_db">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">setup_uncertainty_propagation_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.setup_uncertainty_propagation_db" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">setup_uncertainty_propagation_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.setup_uncertainty_propagation_db" title="Link to this definition"></a></dt>
 <dd><p>Setup an SQL database with several tables needed to store
 the results of the uncertainty progation from twinstat.</p>
 <dl class="field-list simple">
@@ -265,7 +267,7 @@ The default is False.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.setup_sql_db">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">setup_sql_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.setup_sql_db" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">setup_sql_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_existing_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.setup_sql_db" title="Link to this definition"></a></dt>
 <dd><p>Setup an SQL database.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -281,6 +283,12 @@ column names with the double datatype.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;input_0&#39;</span><span class="p">:</span> <span class="s2">&quot;sprocket_1&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;output_0&#39;</span><span class="p">:</span> <span class="s2">&quot;flowrate_14&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
 <dl>
 <dt>Schema:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="s1">&#39;batch int&#39;</span><span class="p">,</span>
@@ -315,7 +323,7 @@ The default is False.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="util.is_steady_state">
-<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">is_steady_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_n_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'relative'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.is_steady_state" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">is_steady_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_n_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'relative'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.is_steady_state" title="Link to this definition"></a></dt>
 <dd><p>Check if the incoming signal has stopped moving and reached a constant value.</p>
 <p>Determination made by regressing the last ‘last_n_values’ on time
 and calculating the probability the linear coefficient is different from
@@ -348,6 +356,68 @@ The default is 0.0.</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="util.exponential_backoff">
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">exponential_backoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.exponential_backoff" title="Link to this definition"></a></dt>
+<dd><p>A decorator function to enable exponential backoff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>max_retries</strong> (<em>int</em><em>, </em><em>optional</em>) – The default is 20.</p></li>
+<li><p><strong>base_delay</strong> (<em>float</em><em>, </em><em>optional</em>) – The default is 1.</p></li>
+<li><p><strong>max_delay</strong> (<em>float</em><em>, </em><em>optional</em>) – The default is 32.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@exponential_backoff</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunctioncalls</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do stuff&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="util.get_cloudformation_metadata">
+<span class="sig-prename descclassname"><span class="pre">util.</span></span><span class="sig-name descname"><span class="pre">get_cloudformation_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stackname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#util.get_cloudformation_metadata" title="Link to this definition"></a></dt>
+<dd><p>Parse and reduce raw cloud formation metadata down to small
+python dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>stackname</strong> (<em>str</em>) – Name of the cloud formation stack</p></li>
+<li><p><strong>region</strong> (<em>str</em><em>, </em><em>optional</em>) – AWS region of account. The default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Function returns metadata for:</dt><dd><ul class="simple">
+<li><p>SiteWise</p></li>
+<li><p>Batch</p></li>
+<li><p>S3</p></li>
+<li><p>DynamoDB</p></li>
+<li><p>RDS</p></li>
+<li><p>IAM</p></li>
+<li><p>SQS</p></li>
+<li><p>IAM</p></li>
+<li><p>Timestream</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>

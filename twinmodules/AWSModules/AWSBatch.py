@@ -4,10 +4,10 @@
 # SPDX-License-Identifier: MIT-0                                     #
 ######################################################################
 
-import os
+#%%
 import boto3
 import time
-
+from twinmodules.core.util import exponential_backoff
 
 class batch(object):
     '''
@@ -17,6 +17,9 @@ class batch(object):
 
     The IaC is relying on AWS SDK, in the future it will
     be swapped for CDK.
+
+    The SDK portion utilizies exponential backoff for submission
+    of large number of jobs or waits.
 
     Parameters
     ----------
@@ -100,14 +103,13 @@ class batch(object):
 
         self.batch_client = boto3.client('batch',region_name = self.region )
 
-
-
+    @exponential_backoff()
     def sendBatchJob(self, jobName:str,
                            jobDefinitionName:str,
-                           override_command:list=None
+                           override_command:list=None,
+                           override_resource:dict={}
                            ) -> None:
         '''
-
 
         Parameters
         ----------
@@ -118,6 +120,10 @@ class batch(object):
         override_command : list, optional
             When running this job, what command line argument should be used
             instead of the command provided in the job definition.
+            The default is None.
+        override_resource : list, optional
+            When running this job, what resources should be used
+            instead of the resources provided in the job definition.
             The default is None.
 
         Returns
@@ -139,17 +145,31 @@ class batch(object):
             #the automation only wants strings
             override_command = list(map(str, override_command))
 
+        # if override_resource is not None:
+        #     if isinstance(override_resource,dict):
+        #         override_resource = {key:str(value) for key,value in override_resource.items()}
+
+        containerOverrides = {  "command":override_command }
+        if 'cpu' in override_resource.keys():
+            containerOverrides['vcpus'] = override_resource.get('cpu',None)
+        if 'Mem' in override_resource.keys():
+            containerOverrides['memory'] = override_resource.get('Mem',None)
+
+
         response = self.batch_client.submit_job(
                                            jobName=jobName,
                                            jobDefinition=jobDefinitionName,
                                            jobQueue =self.queue_name,
-                                           containerOverrides =
-                                           {
-                                               "command":override_command,
-                                               #TODO: enable resource override
-                                               "resourceRequirements": []
-                                               }
+                                           containerOverrides =containerOverrides
+                                           # {
+                                           #     "command":override_command,
+                                           #     #TODO: enable resource override
+                                           #     #"resourceRequirements": override_resource
+                                           #     'vcpus' : override_resource.get('cpu',{}),
+                                           #     'memory' : override_resource.get('Mem',{})
+                                           #     }
                                            )
+
         return response
 
 
@@ -370,6 +390,9 @@ class batch(object):
 
     def generateBatch(self, **kwargs):
         '''
+
+        Deprecated: Use CDK
+
         Generate the AWS Batch environment and the queue needed to
         run jobs in AWS Batch.
 
@@ -479,7 +502,7 @@ class batch(object):
 
         # for security best practices, all of this code was removed
         # in favor of EKS-blueprints
-        
+
         #get eks config -------------------------------------------------------------------
 
         #create compute environment -------------------------------------------------------
@@ -642,6 +665,8 @@ class batch(object):
 
     def terminateBatch( self ) -> None:
         '''
+        Deprecated: Use CDK
+
         When a user is done using an AWS Batch environment,
         this function will terminate both the queue and
         the batch compute environment.
@@ -695,6 +720,11 @@ class batch(object):
 
 
 
+    @exponential_backoff()
+    def _describe_jobs(self, running_jobs):
+        status = self.batch_client.describe_jobs(jobs=running_jobs[:100])['jobs']
+        return status
+
     def wait_for_jobs_finish(self, all_jobs:list[str]) -> None:
         '''
         This is a blocking function that will pause execution
@@ -713,6 +743,7 @@ class batch(object):
         None
 
         '''
+
         import copy
         if not isinstance(all_jobs,list):
             all_jobs=[all_jobs]
@@ -723,15 +754,16 @@ class batch(object):
         while len(running_jobs) >0:
             cnt+=1
 
-            try:
-                #boto3 only allows an input list of length 100
-                status = self.batch_client.describe_jobs(jobs=running_jobs[:100])['jobs']
-            except Exception as e:
-                if "Too Many Requests" in str(e):
-                    time.sleep(1)
-                    continue
-                else:
-                    raise e
+            status = self._describe_jobs(running_jobs)
+            # try:
+            #     #boto3 only allows an input list of length 100
+            #     status = self.batch_client.describe_jobs(jobs=running_jobs[:100])['jobs']
+            # except Exception as e:
+            #     if "Too Many Requests" in str(e):
+            #         time.sleep(1)
+            #         continue
+            #     else:
+            #         raise e
             done_lst = [ x['jobId'] for x in status \
                             if x['status'] == 'FAILED' or x['status'] == 'SUCCEEDED' ]
 
@@ -747,6 +779,7 @@ class batch(object):
                 print("{:.2f}% of jobs have completed.".format(fraction_done))
 
 
+    @exponential_backoff()
     def kill_jobs(self, jobs:list[str]) -> None:
         '''
         Terminate all jobs provided in this list from a
@@ -766,6 +799,7 @@ class batch(object):
         None
 
         '''
+
         for job in jobs:
             self.batch_client.terminate_job(jobId = job,
                                             reason = "No longer needed.")
@@ -796,23 +830,3 @@ class batch(object):
 
 
 
-
-#TODO: come back to this later, would be nice to have a
-# decorator that does the error handling and waiting
-
-# def repeat_try(func, *args, **kwargs):
-
-#      done = False
-#      for _ in range(3):
-#          try:
-#              func(*args, **kwargs)
-#              done = True
-#          except:
-#              print(" Could not delete compute environment.  Trying again in 15sec.")
-#              time.sleep(15)
-#              pass
-
-#      if not done:
-#          print("ERROR: unable to delete the AWS Batch compute environment.")
-#      else:
-#          print("Termination complete.")
