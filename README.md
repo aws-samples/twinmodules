@@ -46,12 +46,10 @@ pip install ./*.whl
 
 Auto-documentation can be found here:
 
-https://gitlab.aws.dev/autonomouscomputesateam/twinmodules/-/tree/main/docs/_build/html
-
 Users can:
 
 ```
-git clone git@ssh.gitlab.aws.dev:autonomouscomputesateam/twinmodules.git
+git clone git@github.com:aws-samples/twinmodules.git
 cd twinmodules/docs/_build/html
 ```
 View the index.html to review API documentation.
